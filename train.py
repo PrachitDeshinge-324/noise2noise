@@ -87,58 +87,64 @@ class Trainer(tf.keras.Model):
 def create_network():
     """Create autoencoder network using Keras layers."""
     model = tf.keras.Sequential([
+        # Convert from NCHW to NHWC
+        tf.keras.layers.Permute((2, 3, 1)),
+        
         # Encoder
-        tf.keras.layers.Conv2D(48, 3, padding='same', data_format='channels_first'),
+        tf.keras.layers.Conv2D(48, 3, padding='same', data_format='channels_last'),
         tf.keras.layers.LeakyReLU(0.1),
-        tf.keras.layers.Conv2D(48, 3, padding='same', data_format='channels_first'),
+        tf.keras.layers.Conv2D(48, 3, padding='same', data_format='channels_last'),
         tf.keras.layers.LeakyReLU(0.1),
-        tf.keras.layers.MaxPooling2D(2, data_format='channels_first'),
+        tf.keras.layers.MaxPooling2D(2, data_format='channels_last'),
         
-        tf.keras.layers.Conv2D(48, 3, padding='same', data_format='channels_first'),
+        tf.keras.layers.Conv2D(48, 3, padding='same', data_format='channels_last'),
         tf.keras.layers.LeakyReLU(0.1),
-        tf.keras.layers.MaxPooling2D(2, data_format='channels_first'),
+        tf.keras.layers.MaxPooling2D(2, data_format='channels_last'),
         
-        tf.keras.layers.Conv2D(48, 3, padding='same', data_format='channels_first'),
+        tf.keras.layers.Conv2D(48, 3, padding='same', data_format='channels_last'),
         tf.keras.layers.LeakyReLU(0.1),
-        tf.keras.layers.MaxPooling2D(2, data_format='channels_first'),
+        tf.keras.layers.MaxPooling2D(2, data_format='channels_last'),
         
-        tf.keras.layers.Conv2D(48, 3, padding='same', data_format='channels_first'),
+        tf.keras.layers.Conv2D(48, 3, padding='same', data_format='channels_last'),
         tf.keras.layers.LeakyReLU(0.1),
-        tf.keras.layers.MaxPooling2D(2, data_format='channels_first'),
+        tf.keras.layers.MaxPooling2D(2, data_format='channels_last'),
         
         # Bottleneck
-        tf.keras.layers.Conv2D(48, 3, padding='same', data_format='channels_first'),
+        tf.keras.layers.Conv2D(48, 3, padding='same', data_format='channels_last'),
         tf.keras.layers.LeakyReLU(0.1),
-        tf.keras.layers.Conv2D(48, 3, padding='same', data_format='channels_first'),
+        tf.keras.layers.Conv2D(48, 3, padding='same', data_format='channels_last'),
         tf.keras.layers.LeakyReLU(0.1),
         
         # Decoder
-        tf.keras.layers.UpSampling2D(2, data_format='channels_first'),
-        tf.keras.layers.Conv2D(96, 3, padding='same', data_format='channels_first'),
+        tf.keras.layers.UpSampling2D(2, data_format='channels_last'),
+        tf.keras.layers.Conv2D(96, 3, padding='same', data_format='channels_last'),
         tf.keras.layers.LeakyReLU(0.1),
-        tf.keras.layers.Conv2D(96, 3, padding='same', data_format='channels_first'),
-        tf.keras.layers.LeakyReLU(0.1),
-        
-        tf.keras.layers.UpSampling2D(2, data_format='channels_first'),
-        tf.keras.layers.Conv2D(96, 3, padding='same', data_format='channels_first'),
-        tf.keras.layers.LeakyReLU(0.1),
-        tf.keras.layers.Conv2D(96, 3, padding='same', data_format='channels_first'),
+        tf.keras.layers.Conv2D(96, 3, padding='same', data_format='channels_last'),
         tf.keras.layers.LeakyReLU(0.1),
         
-        tf.keras.layers.UpSampling2D(2, data_format='channels_first'),
-        tf.keras.layers.Conv2D(96, 3, padding='same', data_format='channels_first'),
+        tf.keras.layers.UpSampling2D(2, data_format='channels_last'),
+        tf.keras.layers.Conv2D(96, 3, padding='same', data_format='channels_last'),
         tf.keras.layers.LeakyReLU(0.1),
-        tf.keras.layers.Conv2D(96, 3, padding='same', data_format='channels_first'),
+        tf.keras.layers.Conv2D(96, 3, padding='same', data_format='channels_last'),
         tf.keras.layers.LeakyReLU(0.1),
         
-        tf.keras.layers.UpSampling2D(2, data_format='channels_first'),
-        tf.keras.layers.Conv2D(64, 3, padding='same', data_format='channels_first'),
+        tf.keras.layers.UpSampling2D(2, data_format='channels_last'),
+        tf.keras.layers.Conv2D(96, 3, padding='same', data_format='channels_last'),
         tf.keras.layers.LeakyReLU(0.1),
-        tf.keras.layers.Conv2D(32, 3, padding='same', data_format='channels_first'),
+        tf.keras.layers.Conv2D(96, 3, padding='same', data_format='channels_last'),
+        tf.keras.layers.LeakyReLU(0.1),
+        
+        tf.keras.layers.UpSampling2D(2, data_format='channels_last'),
+        tf.keras.layers.Conv2D(64, 3, padding='same', data_format='channels_last'),
+        tf.keras.layers.LeakyReLU(0.1),
+        tf.keras.layers.Conv2D(32, 3, padding='same', data_format='channels_last'),
         tf.keras.layers.LeakyReLU(0.1),
         
         # Output
-        tf.keras.layers.Conv2D(3, 3, padding='same', data_format='channels_first')
+        tf.keras.layers.Conv2D(3, 3, padding='same', data_format='channels_last'),
+        
+        # Convert back from NHWC to NCHW
+        tf.keras.layers.Permute((3, 1, 2))
     ])
     return model
 
