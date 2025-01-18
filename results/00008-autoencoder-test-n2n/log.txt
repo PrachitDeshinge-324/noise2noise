@@ -1,0 +1,23 @@
+dnnlib: Running train.train() on localhost...
+Loading validation images from: /Users/prachit/self/[0]Working/OCT/noise2noise/datasets/kodak
+Found 0 images matching /Users/prachit/self/[0]Working/OCT/noise2noise/datasets/kodak/*.png
+Found 0 images matching /Users/prachit/self/[0]Working/OCT/noise2noise/datasets/kodak/*.jpg
+Found 0 images matching /Users/prachit/self/[0]Working/OCT/noise2noise/datasets/kodak/*.jpeg
+Found 0 images matching /Users/prachit/self/[0]Working/OCT/noise2noise/datasets/kodak/*.JPEG
+Found 0 images matching /Users/prachit/self/[0]Working/OCT/noise2noise/datasets/kodak/*.PNG
+Traceback (most recent call last):
+  File "/Users/prachit/self/[0]Working/OCT/noise2noise/config.py", line 256, in <module>
+    args.func(args)
+  File "/Users/prachit/self/[0]Working/OCT/noise2noise/config.py", line 189, in train
+    dnnlib.submission.submit.submit_run(submit_config, **train_config)
+  File "/Users/prachit/self/[0]Working/OCT/noise2noise/dnnlib/submission/submit.py", line 300, in submit_run
+    run_wrapper(submit_config)
+  File "/Users/prachit/self/[0]Working/OCT/noise2noise/dnnlib/submission/submit.py", line 243, in run_wrapper
+    util.call_func_by_name(func_name=submit_config.run_func_name, submit_config=submit_config, **submit_config.run_func_kwargs)
+  File "/Users/prachit/self/[0]Working/OCT/noise2noise/dnnlib/util.py", line 232, in call_func_by_name
+    return func_obj(*args, **kwargs)
+  File "/Users/prachit/self/[0]Working/OCT/noise2noise/train.py", line 158, in train
+    validation_set.load(**validation_config)
+  File "/Users/prachit/self/[0]Working/OCT/noise2noise/validation.py", line 49, in load
+    raise RuntimeError(f'No validation images found in {dataset_dir}')
+RuntimeError: No validation images found in /Users/prachit/self/[0]Working/OCT/noise2noise/datasets/kodak

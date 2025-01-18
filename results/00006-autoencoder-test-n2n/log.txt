@@ -1,0 +1,22 @@
+dnnlib: Running train.train() on localhost...
+
+Warning: No validation images found in /Users/prachit/self/[0]Working/OCT/noise2noise/results/datasets/kodak
+Creating a dummy validation set from the first training image
+ERROR: No images found for validation!
+Setting up dataset source from /Users/prachit/self/[0]Working/OCT/noise2noise/datasets/imagenet_val_raw.tfrecords
+Traceback (most recent call last):
+  File "/Users/prachit/self/[0]Working/OCT/noise2noise/config.py", line 219, in <module>
+    args.func(args)
+  File "/Users/prachit/self/[0]Working/OCT/noise2noise/config.py", line 152, in train
+    dnnlib.submission.submit.submit_run(submit_config, **train_config)
+  File "/Users/prachit/self/[0]Working/OCT/noise2noise/dnnlib/submission/submit.py", line 300, in submit_run
+    run_wrapper(submit_config)
+  File "/Users/prachit/self/[0]Working/OCT/noise2noise/dnnlib/submission/submit.py", line 243, in run_wrapper
+    util.call_func_by_name(func_name=submit_config.run_func_name, submit_config=submit_config, **submit_config.run_func_kwargs)
+  File "/Users/prachit/self/[0]Working/OCT/noise2noise/dnnlib/util.py", line 232, in call_func_by_name
+    return func_obj(*args, **kwargs)
+  File "/Users/prachit/self/[0]Working/OCT/noise2noise/train.py", line 177, in train
+    validation_set.evaluate(network, i, noise_augmenter.add_validation_noise_np)
+  File "/Users/prachit/self/[0]Working/OCT/noise2noise/validation.py", line 69, in evaluate
+    for idx in range(len(self.images)):
+TypeError: object of type 'NoneType' has no len()

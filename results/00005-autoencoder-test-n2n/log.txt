@@ -1,0 +1,38 @@
+dnnlib: Running train.train() on localhost...
+
+Warning: No validation images found in /Users/prachit/self/[0]Working/OCT/noise2noise/results/datasets/kodak
+Creating a dummy validation set from the first training image
+ERROR: No images found for validation!
+Setting up dataset source from /Users/prachit/self/[0]Working/OCT/noise2noise/datasets/imagenet_val_raw.tfrecords
+Traceback (most recent call last):
+  File "/Users/prachit/self/[0]Working/OCT/noise2noise/config.py", line 219, in <module>
+    args.func(args)
+  File "/Users/prachit/self/[0]Working/OCT/noise2noise/config.py", line 152, in train
+    dnnlib.submission.submit.submit_run(submit_config, **train_config)
+  File "/Users/prachit/self/[0]Working/OCT/noise2noise/dnnlib/submission/submit.py", line 300, in submit_run
+    run_wrapper(submit_config)
+  File "/Users/prachit/self/[0]Working/OCT/noise2noise/dnnlib/submission/submit.py", line 243, in run_wrapper
+    util.call_func_by_name(func_name=submit_config.run_func_name, submit_config=submit_config, **submit_config.run_func_kwargs)
+  File "/Users/prachit/self/[0]Working/OCT/noise2noise/dnnlib/util.py", line 232, in call_func_by_name
+    return func_obj(*args, **kwargs)
+  File "/Users/prachit/self/[0]Working/OCT/noise2noise/train.py", line 115, in train
+    loss, denoised = trainer.train_step(noisy_input, noisy_target, clean_target)
+  File "/opt/homebrew/Caskroom/miniforge/base/envs/n2n/lib/python3.9/site-packages/tensorflow/python/util/traceback_utils.py", line 153, in error_handler
+    raise e.with_traceback(filtered_tb) from None
+  File "/var/folders/wf/l9dtgxnd7ng4lhszcp8g5g1m0000gn/T/__autograph_generated_filenrypo6cb.py", line 11, in tf__train_step
+    denoised = ag__.converted_call(ag__.ld(self).network, (ag__.ld(noisy_input),), dict(training=True), fscope)
+  File "/opt/homebrew/Caskroom/miniforge/base/envs/n2n/lib/python3.9/site-packages/keras/src/utils/traceback_utils.py", line 122, in error_handler
+    raise e.with_traceback(filtered_tb) from None
+  File "/opt/homebrew/Caskroom/miniforge/base/envs/n2n/lib/python3.9/site-packages/keras/src/models/sequential.py", line 164, in build
+    raise ValueError(
+ValueError: in user code:
+
+    File "/Users/prachit/self/[0]Working/OCT/noise2noise/train.py", line 79, in train_step  *
+        denoised = self.network(noisy_input, training=True)
+    File "/opt/homebrew/Caskroom/miniforge/base/envs/n2n/lib/python3.9/site-packages/keras/src/utils/traceback_utils.py", line 122, in error_handler  **
+        raise e.with_traceback(filtered_tb) from None
+    File "/opt/homebrew/Caskroom/miniforge/base/envs/n2n/lib/python3.9/site-packages/keras/src/models/sequential.py", line 164, in build
+        raise ValueError(
+
+    ValueError: Sequential model sequential cannot be built because it has no layers. Call `model.add(layer)`.
+

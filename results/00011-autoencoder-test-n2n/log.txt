@@ -1,0 +1,25 @@
+dnnlib: Running train.train() on localhost...
+Loading validation images from: /Users/prachit/self/[0]Working/OCT/noise2noise/img1
+
+Directory contents:
+  Frame5.png
+  Frame4.png
+  Frame3.png
+  Frame2.png
+  Frame1.png
+Found image: /Users/prachit/self/[0]Working/OCT/noise2noise/img1/Frame5.png
+Found image: /Users/prachit/self/[0]Working/OCT/noise2noise/img1/Frame4.png
+Found image: /Users/prachit/self/[0]Working/OCT/noise2noise/img1/Frame3.png
+Found image: /Users/prachit/self/[0]Working/OCT/noise2noise/img1/Frame2.png
+Found image: /Users/prachit/self/[0]Working/OCT/noise2noise/img1/Frame1.png
+
+Loading 5 validation images...
+Successfully loaded: Frame1.png
+Successfully loaded: Frame2.png
+Successfully loaded: Frame3.png
+Successfully loaded: Frame4.png
+Successfully loaded: Frame5.png
+
+Successfully loaded 5 validation images
+Setting up dataset source from /Users/prachit/self/[0]Working/OCT/noise2noise/datasets/imagenet_val_raw.tfrecords
+Average PSNR: 8.52

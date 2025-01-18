@@ -1,0 +1,4 @@
+dnnlib: Running train.train() on localhost...
+
+ERROR: No files found using the following glob pattern: /Users/prachit/self/[0]Working/OCT/noise2noise/datasets/kodak/* 
+

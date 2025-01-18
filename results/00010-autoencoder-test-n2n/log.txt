@@ -1,0 +1,42 @@
+dnnlib: Running train.train() on localhost...
+Loading validation images from: /Users/prachit/self/[0]Working/OCT/noise2noise/img1
+
+Directory contents:
+  Frame5.png
+  Frame4.png
+  Frame3.png
+  Frame2.png
+  Frame1.png
+Found image: /Users/prachit/self/[0]Working/OCT/noise2noise/img1/Frame5.png
+Found image: /Users/prachit/self/[0]Working/OCT/noise2noise/img1/Frame4.png
+Found image: /Users/prachit/self/[0]Working/OCT/noise2noise/img1/Frame3.png
+Found image: /Users/prachit/self/[0]Working/OCT/noise2noise/img1/Frame2.png
+Found image: /Users/prachit/self/[0]Working/OCT/noise2noise/img1/Frame1.png
+
+Loading 5 validation images...
+Successfully loaded: Frame1.png
+Successfully loaded: Frame2.png
+Successfully loaded: Frame3.png
+Successfully loaded: Frame4.png
+Successfully loaded: Frame5.png
+
+Successfully loaded 5 validation images
+Setting up dataset source from /Users/prachit/self/[0]Working/OCT/noise2noise/datasets/imagenet_val_raw.tfrecords
+Traceback (most recent call last):
+  File "/Users/prachit/self/[0]Working/OCT/noise2noise/config.py", line 255, in <module>
+    args.func(args)
+  File "/Users/prachit/self/[0]Working/OCT/noise2noise/config.py", line 188, in train
+    dnnlib.submission.submit.submit_run(submit_config, **train_config)
+  File "/Users/prachit/self/[0]Working/OCT/noise2noise/dnnlib/submission/submit.py", line 300, in submit_run
+    run_wrapper(submit_config)
+  File "/Users/prachit/self/[0]Working/OCT/noise2noise/dnnlib/submission/submit.py", line 243, in run_wrapper
+    util.call_func_by_name(func_name=submit_config.run_func_name, submit_config=submit_config, **submit_config.run_func_kwargs)
+  File "/Users/prachit/self/[0]Working/OCT/noise2noise/dnnlib/util.py", line 232, in call_func_by_name
+    return func_obj(*args, **kwargs)
+  File "/Users/prachit/self/[0]Working/OCT/noise2noise/train.py", line 177, in train
+    validation_set.evaluate(network, i, noise_augmenter.add_validation_noise_np)
+  File "/Users/prachit/self/[0]Working/OCT/noise2noise/validation.py", line 88, in evaluate
+    pred255 = util.infer_image(net, noisy_img)
+  File "/Users/prachit/self/[0]Working/OCT/noise2noise/util.py", line 59, in infer_image
+    inferred = net.run(np.expand_dims(padded_img, axis=0), width=w+pw, height=h+ph)
+AttributeError: 'Sequential' object has no attribute 'run'
